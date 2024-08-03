@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Word Counter </title>
+    <style>
+        body{
+            padding: 50px 100px;
+        }
+        h1{
+            text-align: center;
+            background-color:dodgerblue;
+            padding: 15px;
+            margin: 0px;
+        }
+        textarea{
+            margin: 0px;
+            width: 99.5%;
+            font-size: xx-large;
+        }
+        p{
+            text-align: center;
+            background-color:dodgerblue;
+            padding: 15px;
+            margin: 0px;
+            font-size: 30px;
+            font-weight:bolder;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Word and Character Counter</h1>
+    <textarea id="textBox" cols="30" rows="10"></textarea>
+    <p>
+        <span id="word">0</span> Word and
+        <span id="char">0</span> Character
+    </p>
+
+    <script>
+        let textbox = document.getElementById("textBox");
+        textbox.addEventListener("input", function(){
+            var text = this.value;
+            // console.log(text)
+            var char = text.length;             //This Function For Count Word length using array length and store into char variable
+            document.getElementById("char").innerHTML = char;
+
+            text = text.trim();                             //It use for Remove Previous & Last space From Word or Line
+            var word = text.split(" ");                     //this Function separate Word usig space and count As array list
+            // console.log(word)
+            let CleanList = word.filter(function(elm){      //It craete for Ignore or Don't Count Other Adition space Between Each word
+                return elm != "";                           //when we use Space Then it Create Empty list such as ("") so for ignore we write this
+            })
+            document.getElementById("word").innerHTML = CleanList.length;
+        });
+    </script>
+
+</body>
+</html>
